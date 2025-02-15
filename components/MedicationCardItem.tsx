@@ -43,13 +43,13 @@ export default function MedicationCardItem({
   const [status, setStatus] = useState<Status | null>(null);
 
   const CheckStatus = () => {
-    const data: Status | null = (Array.isArray(medicine?.action)
-      ? medicine.action.find((item) => item.date === selectedDate)
-      : null) || null;
-  
+    const data: Status | null =
+      (Array.isArray(medicine?.action)
+        ? medicine.action.find((item) => item.date === selectedDate)
+        : null) || null;
+
     setStatus(data);
   };
-  
 
   useEffect(() => {
     CheckStatus();

@@ -61,6 +61,7 @@ export default function AddMedicationForm() {
     const dates=getDatesRange(formData?.startDate,formData?.endDate)
     console.log(dates)
     setLoading(true)
+    console.log("Form Data",formData);
 
     try {
       await setDoc(doc(db, "medications", docId),{
@@ -245,7 +246,7 @@ export default function AddMedicationForm() {
             color="black"
           />
           <Text style={styles.text}>
-            {formData?.reminder ? formatTime(new Date(formData.reminder).getTime()) : "Set Reminder"}
+            {formData?.reminder ? formData.reminder.toString() : "Set Reminder"}
           </Text>
         </Pressable>
         {showTimePicker && (
@@ -254,9 +255,11 @@ export default function AddMedicationForm() {
               formData?.reminder ? new Date(formData.reminder) : new Date()
             }
             mode="time"
-            minimumDate={new Date()}
+            
+            
             onChange={(event) => {
               onHandleInputChange("reminder",formatTime(event.nativeEvent.timestamp));
+              console.log("reminder",formatTime(event.nativeEvent.timestamp));
               
               setShowTimePicker(false);
             }}

@@ -14,11 +14,13 @@ export const formatDateForText=(date: Date)=>{
 
 export const formatTime = (timestamp: number): string => {
     const date = new Date(timestamp);
+    console.log("date",date);
     const timeString = date.toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit'
     } );
-    console.log(timeString);
+
+    console.log("format time",timeString);
     return timeString;
 }
 
